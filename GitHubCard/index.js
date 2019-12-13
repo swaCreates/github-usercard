@@ -2,9 +2,12 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-axios.get('https://api.github.com/users/swaCreates').then(function(res){
-    console.log(res);
-  })
+axios.get('https://api.github.com/users/swaCreates').then(function(response){
+
+  const res_Data= response.data;
+  const newCard= cardCreator(res_Data);
+  cardContainer.appendChild(newCard);
+})
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -53,7 +56,7 @@ const cardContainer= document.querySelector('.cards');
 
 function cardCreator(obj){
 
-  // creating elements
+  // creating DOM elements
 
   const card= document.createElement('div');
   const image= document.createElement('img');
@@ -86,6 +89,17 @@ function cardCreator(obj){
   cardInfo.appendChild(p_followers);
   cardInfo.appendChild(p_following);
   cardInfo.appendChild(p_bio);
+
+  // adding text content
+
+  image.src= obj.avatar_url;
+  h3Name.textContent= obj.name;
+  p_userName.textContent= obj.login;
+  p_location.textContent= obj.location;
+  address.textContent= obj.html_url;
+  p_followers.textContent= obj.followers;
+  p_following.textContent= obj.following;
+  p_bio.textContent= obj.bio;
 
   // returning card because everything will be appended to it
 
