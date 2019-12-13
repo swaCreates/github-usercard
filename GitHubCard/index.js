@@ -51,6 +51,7 @@ axios.get('https://api.github.com/users/swaCreates').then(function(response){
 */
 
 
+
 // adding friends to page AND github handles to the followersArray
 
 axios.get('https://api.github.com/users/swaCreates/followers').then(function(response){
@@ -66,6 +67,9 @@ axios.get('https://api.github.com/users/swaCreates/followers').then(function(res
 const followersArray = [];
 
 console.log(followersArray);
+
+
+
 
 const cardContainer= document.querySelector('.cards');
 
@@ -121,6 +125,7 @@ function cardCreator(obj){
   return card;
 
 }
+
 
 /* List of LS Instructors Github username's: 
   tetondan
