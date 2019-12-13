@@ -2,6 +2,9 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+axios.get('https://api.github.com/users/swaCreates').then(function(res){
+    console.log(res);
+  })
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -24,7 +27,6 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -45,6 +47,51 @@ const followersArray = [];
 </div>
 
 */
+
+const followersArray = [];
+const cardContainer= document.querySelector('.cards');
+
+function cardCreator(obj){
+
+  // creating elements
+
+  const card= document.createElement('div');
+  const image= document.createElement('img');
+  const cardInfo= document.createElement('div');
+  const h3Name= document.createElement('h3');
+  const p_userName= document.createElement('p');
+  const p_location= document.createElement('p');
+  const p_profile= document.createElement('p');
+  const address= document.createElement('a');
+  const p_followers= document.createElement('p');
+  const p_following= document.createElement('p');
+  const p_bio= document.createElement('p');
+
+  // creating classes
+
+  card.classList.add('card');
+  cardInfo.classList.add('card-info');
+  h3Name.classList.add('name');
+  p_userName.classList.add('username');
+
+  // appending content
+
+  card.appendChild(image);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(h3Name);
+  cardInfo.appendChild(p_userName);
+  cardInfo.appendChild(p_location);
+  cardInfo.appendChild(p_profile);
+  p_profile.appendChild(address);
+  cardInfo.appendChild(p_followers);
+  cardInfo.appendChild(p_following);
+  cardInfo.appendChild(p_bio);
+
+  // returning card because everything will be appended to it
+
+  return card;
+
+}
 
 /* List of LS Instructors Github username's: 
   tetondan
