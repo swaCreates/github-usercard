@@ -3,7 +3,7 @@
            https://api.github.com/users/<your name>
 */
 axios.get('https://api.github.com/users/swaCreates').then(function(response){
-
+  // console.log(response.data);
   const res_Data= response.data;
   const newCard= cardCreator(res_Data);
   cardContainer.appendChild(newCard);
@@ -30,7 +30,6 @@ axios.get('https://api.github.com/users/swaCreates').then(function(response){
           user, and adding that card to the DOM.
 */
 
-
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
 
@@ -51,7 +50,23 @@ axios.get('https://api.github.com/users/swaCreates').then(function(response){
 
 */
 
+
+// adding friends to page AND github handles to the followersArray
+
+axios.get('https://api.github.com/users/swaCreates/followers').then(function(response){
+  response.data.forEach(function(item){
+    const followerCard= cardCreator(item);
+    cardContainer.appendChild(followerCard);
+
+    followersArray.push(followerCard.textContent);
+
+  })
+})
+
 const followersArray = [];
+
+console.log(followersArray);
+
 const cardContainer= document.querySelector('.cards');
 
 function cardCreator(obj){
